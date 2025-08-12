@@ -1,13 +1,24 @@
 from math import pi
 
-# Listas
+# LISTAS
 empty_list = list()  #Define lista vazia
-empty_list = ['banana', pi, True, [1,2,3,4], 8]
+list_example = ['banana', pi, True, [1,2,3,4], 8]
 
-    # Maneiras de acessar os itens de uma lista em ordem
-for item in empty_list:
-  print(item)
-i = 0
-for i in range(0, len(empty_list)):
-    print(empty_list[i])
+# Maneiras de acessar os itens de uma lista em ordem
+for item in list_example:
+  print(item) #printa em ordem
+i = 1
+for i in range(i, (len(list_example)+1)):
+    print(list_example[-i]) #printa ao contrário
+    
+# Sublistas
+# Retorna um subset de elementos da lista
+print(list_example[1:4]) #printa os elementos 1,2 e 3
 
+# Strings também são listas
+string_example = "mystring"
+print(string_example[2:8])
+sorted_list = list()
+for s in string_example:
+    sorted_list.append(s)
+print(sorted(string_example)) #sorted() - método que organiza listas
