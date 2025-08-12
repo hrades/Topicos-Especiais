@@ -19,6 +19,5 @@ print(list_example[1:4]) #printa os elementos 1,2 e 3
 string_example = "mystring"
 print(string_example[2:8])
 sorted_list = list()
-for s in string_example:
-    sorted_list.append(s)
-print(sorted(string_example)) #sorted() - método que organiza listas
+sorted_list = sorted(string_example)
+print(sorted_list)
