@@ -36,6 +36,8 @@ student2 = {'nome':'Guilherme', 'ra':'061210033', 'semestre':8, 'curso':'EC'}
 student1['new_key'] = 'new value' # Adicionar nova chave ao dicionário
 lista_dicio = [student1, student2]
 for dicio in lista_dicio:
+    print('\nAluno:')
     for info in dicio:    
         print(dicio[info])
+
 
