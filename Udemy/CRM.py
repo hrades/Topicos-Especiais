@@ -29,7 +29,7 @@ def cadastrar(info=str(), lista_dados=list(), lista_textos=list()):
 def consultar(lista_dados=list(), lista_textos=list()):
     if len(lista_dados)==0:
         print('Nenhuma informacao cadastrada')
-        sleep(3)
+        sleep(2)
         system('cls')
     else:
         system('cls')
@@ -52,7 +52,26 @@ def excluir(lista_dados=list()):
             lista_dados.pop(exclusao)
         else:
             print('ERRO! Informação selecionada inexistente')
-            sleep(3)
+            sleep(2)
+
+def tela(selecao=int(), lista_dados=list(), lista_textos=list()):
+    while True:
+        system('cls')
+        tela_gerenciamento(textos[selecao])
+        opcao = int(input('Escolha uma opcao pelo numero: '))
+        while opcao not in escolhas:
+           print('Comando inválido! Digite novamente')
+           opcao = int(input('Escolha uma opcao pelo numero: '))
+        if opcao==1:
+            cadastrar(textos[selecao], lista_dados, lista_textos)
+        elif opcao==2:
+            consultar(lista_dados, lista_textos)
+        elif opcao==3:
+            excluir(lista_dados)
+        elif opcao==4:
+            break
+    system('cls')
+    return 0
 
 selecao = int()
 opcao = int()
@@ -76,58 +95,14 @@ while True:
         print('Comando inválido! Digite novamente')
         selecao = int(input('Escolha uma opcao pelo numero: '))
 
-    while selecao==1:
-        tela_gerenciamento(textos[selecao])
-        opcao = int(input('Escolha uma opcao pelo numero: '))
-        while opcao not in escolhas:
-            print('Comando inválido! Digite novamente')
-            opcao = int(input('Escolha uma opcao pelo numero: '))
-        if opcao==1:
-            cadastrar(textos[selecao], lista_clientes, textos_clientes)
-        elif opcao==2:
-            consultar(lista_clientes, textos_clientes)
-        elif opcao==3:
-            excluir(lista_clientes)
-        elif opcao==4:
-            selecao = 0
-            opcao = 0
-            system('cls')
-
-    while selecao==2:
-        tela_gerenciamento(textos[selecao])
-        opcao = int(input('Escolha uma opcao pelo numero: '))
-        while opcao not in escolhas:
-            print('Comando inválido! Digite novamente')
-            opcao = int(input('Escolha uma opcao pelo numero: '))
-        if opcao==1:
-            cadastrar(textos[selecao], lista_tarefas, textos_tarefas)
-        elif opcao==2:
-            consultar(lista_tarefas, textos_tarefas)
-        elif opcao==3:
-            excluir(lista_tarefas)
-        elif opcao==4:
-            selecao = 0
-            opcao = 0
-            system('cls')
-
-    while selecao==3:
-        tela_gerenciamento(textos[selecao])
-        opcao = int(input('Escolha uma opcao pelo numero: '))
-        while opcao not in escolhas:
-            print('Comando inválido! Digite novamente')
-            opcao = int(input('Escolha uma opcao pelo numero: '))
-        if opcao==1:
-            cadastrar(textos[selecao], lista_campanhas, textos_campanhas)
-        elif opcao==2:
-            consultar(lista_campanhas, textos_campanhas)
-        elif opcao==3:
-            excluir(lista_campanhas)
-        elif opcao==4:
-            selecao = 0
-            opcao = 0
-            system('cls')
+    if selecao==1:
+        selecao = tela(selecao, lista_clientes, textos_clientes)
+    elif selecao==2:
+        selecao = tela(selecao, lista_tarefas, textos_tarefas)
+    elif selecao==3:
+        selecao = tela(selecao, lista_campanhas, textos_campanhas)
     
-    if selecao==4:
+    elif selecao==4:
         system('cls')
         fechar = input('Tem certeza que quer fechar? (s/n): ').lower()
         while fechar not in 'sn':
@@ -137,7 +112,5 @@ while True:
             system('cls')
             break
         else:
-            selecao==0
+            selecao=0
             system('cls')
-
-
