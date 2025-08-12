@@ -20,8 +20,10 @@ def cadastrar(info=str(), lista_dados=list(), lista_textos=list()):
     print(f'- Cadastro de {info}')
     dado1 = input(lista_textos[0])
     dado2 = input(lista_textos[1])
-    dado3 = input(lista_textos[2])
-    dados = [dado1, dado2, dado3]
+    dados = [dado1, dado2]
+    if len(lista_textos)==3:
+        dado3 = input(lista_textos[2])
+        dados.append(dado3)
     lista_dados.append(dados)
 
 def consultar(lista_dados=list(), lista_textos=list()):
@@ -32,15 +34,25 @@ def consultar(lista_dados=list(), lista_textos=list()):
     else:
         system('cls')
         for item in lista_dados:
-            for ind in range(0,3):
+            print('')
+            for ind in range(0,len(lista_textos)):
                 print(f'{lista_textos[ind]}{item[ind]}')
         voltar = input('\nPressione Enter para voltar')
 
 def excluir(lista_dados=list()):
-    for c in range(0, len(lista_dados)):
-        print(f'{c} - {lista_dados[c][0]}')
-    exclusao = int(input('Escolha qual será excluído pelo número: '))
-    lista_dados.pop(exclusao)
+    if len(lista_dados)==0:
+        print('Nenhuma informacao cadastrada')
+        sleep(3)
+        system('cls')
+    else:
+        for c in range(0, len(lista_dados)):
+            print(f'{c} - {lista_dados[c][0]}')
+        exclusao = int(input('Escolha qual será excluído pelo número: '))
+        if exclusao in range(0, len(lista_dados)):
+            lista_dados.pop(exclusao)
+        else:
+            print('ERRO! Informação selecionada inexistente')
+            sleep(3)
 
 selecao = int()
 opcao = int()
@@ -51,8 +63,10 @@ lista_clientes = list()
 textos_clientes = ['Nome do cliente: ', 'Email do cliente: ', 'Telefone do cliente: ']
 
 lista_tarefas = list()
+textos_tarefas = ['Titulo da tarefa: ', 'Prioridade: ', 'Descrição da tarefa: ']
 
 lista_campanhas = list()
+textos_campanhas = ['Nome da campanha: ', 'Descrição da campanha: ']
 
 
 while True:
@@ -78,13 +92,47 @@ while True:
             selecao = 0
             opcao = 0
             system('cls')
+
+    while selecao==2:
+        tela_gerenciamento(textos[selecao])
+        opcao = int(input('Escolha uma opcao pelo numero: '))
+        while opcao not in escolhas:
+            print('Comando inválido! Digite novamente')
+            opcao = int(input('Escolha uma opcao pelo numero: '))
+        if opcao==1:
+            cadastrar(textos[selecao], lista_tarefas, textos_tarefas)
+        elif opcao==2:
+            consultar(lista_tarefas, textos_tarefas)
+        elif opcao==3:
+            excluir(lista_tarefas)
+        elif opcao==4:
+            selecao = 0
+            opcao = 0
+            system('cls')
+
+    while selecao==3:
+        tela_gerenciamento(textos[selecao])
+        opcao = int(input('Escolha uma opcao pelo numero: '))
+        while opcao not in escolhas:
+            print('Comando inválido! Digite novamente')
+            opcao = int(input('Escolha uma opcao pelo numero: '))
+        if opcao==1:
+            cadastrar(textos[selecao], lista_campanhas, textos_campanhas)
+        elif opcao==2:
+            consultar(lista_campanhas, textos_campanhas)
+        elif opcao==3:
+            excluir(lista_campanhas)
+        elif opcao==4:
+            selecao = 0
+            opcao = 0
+            system('cls')
     
     if selecao==4:
         system('cls')
         fechar = input('Tem certeza que quer fechar? (s/n): ').lower()
         while fechar not in 'sn':
             system('cls')
-            fechar = input('Opção inválida. Digite s para ou n para continuar no app: ')
+            fechar = input('Opção inválida. Digite s para sair ou n para continuar no app: ')
         if fechar=='s':
             system('cls')
             break
