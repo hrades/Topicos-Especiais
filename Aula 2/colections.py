@@ -30,3 +30,10 @@ set_example.add('Grande teste')
 print(set_example)
 
 # DICIONÁRIO
+# Coleção chave:valor
+student1 = {'nome':'Heloísa', 'ra':'061210035', 'semestre':10, 'curso':'ECA'}
+student2 = {'nome':'Guilherme', 'ra':'061210033', 'semestre':8, 'curso':'EC'}
+lista_dicio = [student1, student2]
+for dicio in lista_dicio:
+    for info in dicio:    
+        print(dicio[info])
