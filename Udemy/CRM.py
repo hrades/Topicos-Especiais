@@ -47,7 +47,12 @@ def excluir(lista_dados=list()):
     else:
         for c in range(0, len(lista_dados)):
             print(f'{c} - {lista_dados[c][0]}')
-        exclusao = int(input('Escolha qual será excluído pelo número: '))
+        exclusao = input('Escolha qual será excluído pelo número: ')
+        resp = exclusao.isnumeric()
+        while resp!=True:
+            exclusao = input('ERRO! Sua resposta deve ser um número. \nEscolha qual será excluído pelo número: ')
+            resp = exclusao.isnumeric()
+        exclusao = int(exclusao)
         if exclusao in range(0, len(lista_dados)):
             lista_dados.pop(exclusao)
         else:
@@ -58,10 +63,11 @@ def tela(selecao=int(), lista_dados=list(), lista_textos=list()):
     while True:
         system('cls')
         tela_gerenciamento(textos[selecao])
-        opcao = int(input('Escolha uma opcao pelo numero: '))
+        opcao = input('Escolha uma opcao pelo numero: ')
         while opcao not in escolhas:
            print('Comando inválido! Digite novamente')
-           opcao = int(input('Escolha uma opcao pelo numero: '))
+           opcao = input('Escolha uma opcao pelo numero: ')
+        opcao = int(opcao)
         if opcao==1:
             cadastrar(textos[selecao], lista_dados, lista_textos)
         elif opcao==2:
@@ -75,7 +81,7 @@ def tela(selecao=int(), lista_dados=list(), lista_textos=list()):
 
 selecao = int()
 opcao = int()
-escolhas = [1, 2, 3, 4]
+escolhas = ['1', '2', '3', '4']
 textos = ['','cliente','tarefa', 'campanha']
 
 lista_clientes = list()
@@ -90,11 +96,11 @@ textos_campanhas = ['Nome da campanha: ', 'Descrição da campanha: ']
 
 while True:
     main_menu()
-    selecao = int(input('Escolha uma opcao pelo numero: '))
+    selecao = input('Escolha uma opcao pelo numero: ')
     while selecao not in escolhas:
         print('Comando inválido! Digite novamente')
-        selecao = int(input('Escolha uma opcao pelo numero: '))
-
+        selecao = input('Escolha uma opcao pelo numero: ')
+    selecao = int(selecao)
     if selecao==1:
         selecao = tela(selecao, lista_clientes, textos_clientes)
     elif selecao==2:
@@ -105,9 +111,13 @@ while True:
     elif selecao==4:
         system('cls')
         fechar = input('Tem certeza que quer fechar? (s/n): ').lower()
+        if fechar == '':
+            fechar='vazio'
         while fechar not in 'sn':
             system('cls')
             fechar = input('Opção inválida. Digite s para sair ou n para continuar no app: ')
+            if fechar == '':
+                fechar='vazio'
         if fechar=='s':
             system('cls')
             break
