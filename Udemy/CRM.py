@@ -1,5 +1,35 @@
 from os import system
 from time import sleep
+import json # Biblioteca para trabalhar com arquivos JSON
+
+# --- NOVAS FUNÇÕES PARA SALVAR E CARREGAR DADOS ---
+
+def salvar_dados(clientes, tarefas, campanhas):
+    # Cria um dicionário para organizar todos os dados
+    dados_para_salvar = {
+        'clientes': clientes,
+        'tarefas': tarefas,
+        'campanhas': campanhas
+    }
+    # Abre o arquivo 'dados_crm.json' em modo de escrita ('w')
+    # O 'with' garante que o arquivo será fechado corretamente no final
+    with open('dados_crm.json', 'w', encoding='utf-8') as arquivo:
+        # Usa json.dump para escrever o dicionário no arquivo indent=4 formata o arquivo para ser mais legível por humanos
+        json.dump(dados_para_salvar, arquivo, indent=4)
+
+def carregar_dados():
+    '''Carrega os dados do arquivo JSON no início do programa
+       Se o arquivo não existir, retorna listas vazias'''
+    try:
+        # Tenta abrir o arquivo 'dados_crm.json' em modo de leitura ('r')
+        with open('dados_crm.json', 'r', encoding='utf-8') as arquivo:
+            # Carrega o conteúdo do JSON para um dicionário
+            dados = json.load(arquivo)
+            # Retorna os dados das listas. .get() é usado para evitar erros caso uma das chaves (clientes, tarefas, etc.) não exista no arquivo.
+            return dados.get('clientes', []), dados.get('tarefas', []), dados.get('campanhas', [])
+    except FileNotFoundError:
+        # Se o arquivo não for encontrado (primeira vez que o programa roda), retorna três listas vazias.
+        return [], [], []
 
 def main_menu():
     print('- Gerenciador de Relacionamento com Clintes -')
@@ -84,15 +114,13 @@ opcao = int()
 escolhas = ['1', '2', '3', '4']
 textos = ['','cliente','tarefa', 'campanha']
 
-lista_clientes = list()
+# MODIFICAÇÃO: Carrega os dados do arquivo JSON ao iniciar o programa
+lista_clientes, lista_tarefas, lista_campanhas = carregar_dados()
+
+# Textos para os prompts de cadastro
 textos_clientes = ['Nome do cliente: ', 'Email do cliente: ', 'Telefone do cliente: ']
-
-lista_tarefas = list()
 textos_tarefas = ['Titulo da tarefa: ', 'Prioridade: ', 'Descrição da tarefa: ']
-
-lista_campanhas = list()
 textos_campanhas = ['Nome da campanha: ', 'Descrição da campanha: ']
-
 
 while True:
     main_menu()
@@ -107,6 +135,9 @@ while True:
         selecao = tela(selecao, lista_tarefas, textos_tarefas)
     elif selecao==3:
         selecao = tela(selecao, lista_campanhas, textos_campanhas)
+    # Salvar dados das listas no json
+    if opcao in [1, 3]:
+            salvar_dados(lista_clientes, lista_tarefas, lista_campanhas)
     
     elif selecao==4:
         system('cls')
