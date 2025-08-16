@@ -106,6 +106,9 @@ def tela(selecao=int(), lista_dados=list(), lista_textos=list()):
             excluir(lista_dados)
         elif opcao==4:
             break
+        # Salvar dados das listas no json
+        if opcao in [1, 3]:
+            salvar_dados(lista_clientes, lista_tarefas, lista_campanhas)
     system('cls')
     return 0
 
@@ -114,10 +117,9 @@ opcao = int()
 escolhas = ['1', '2', '3', '4']
 textos = ['','cliente','tarefa', 'campanha']
 
-# MODIFICAÇÃO: Carrega os dados do arquivo JSON ao iniciar o programa
+# Carrega os dados do arquivo JSON ao iniciar o programa
 lista_clientes, lista_tarefas, lista_campanhas = carregar_dados()
 
-# Textos para os prompts de cadastro
 textos_clientes = ['Nome do cliente: ', 'Email do cliente: ', 'Telefone do cliente: ']
 textos_tarefas = ['Titulo da tarefa: ', 'Prioridade: ', 'Descrição da tarefa: ']
 textos_campanhas = ['Nome da campanha: ', 'Descrição da campanha: ']
