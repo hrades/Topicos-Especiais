@@ -1,34 +1,42 @@
 from os import system
 from time import sleep
 import json # Biblioteca para trabalhar com arquivos JSON
+import os
 
-# --- NOVAS FUNÇÕES PARA SALVAR E CARREGAR DADOS ---
+NOME_PASTA = 'Projeto CRM/dados' #Mudar o nome das pastas onde está o programa
+NOME_ARQUIVO = 'dados_crm.json'
+CAMINHO_ARQUIVO = os.path.join(NOME_PASTA, NOME_ARQUIVO)
 
 def salvar_dados(clientes, tarefas, campanhas):
-    # Cria um dicionário para organizar todos os dados
+    # Pega o caminho da pasta a partir do caminho completo do arquivo
+    pasta = os.path.dirname(CAMINHO_ARQUIVO)
+
+    # Verifica se a pasta existe. Se não, cria a pasta.
+    if not os.path.exists(pasta):
+        os.makedirs(pasta)
+        print(f"Pasta '{pasta}' criada com sucesso.")
+
     dados_para_salvar = {
         'clientes': clientes,
         'tarefas': tarefas,
         'campanhas': campanhas
     }
-    # Abre o arquivo 'dados_crm.json' em modo de escrita ('w')
-    # O 'with' garante que o arquivo será fechado corretamente no final
-    with open('dados_crm.json', 'w', encoding='utf-8') as arquivo:
-        # Usa json.dump para escrever o dicionário no arquivo indent=4 formata o arquivo para ser mais legível por humanos
+    # Usa a variável CAMINHO_ARQUIVO para abrir o arquivo no local certo
+    with open(CAMINHO_ARQUIVO, 'w', encoding='utf-8') as arquivo:
         json.dump(dados_para_salvar, arquivo, indent=4)
+    print("\nDados salvos com sucesso!")
+    sleep(1)
 
 def carregar_dados():
-    '''Carrega os dados do arquivo JSON no início do programa
-       Se o arquivo não existir, retorna listas vazias'''
+    '''Carrega os dados do arquivo JSON de uma pasta específica'''
+    
     try:
-        # Tenta abrir o arquivo 'dados_crm.json' em modo de leitura ('r')
-        with open('dados_crm.json', 'r', encoding='utf-8') as arquivo:
-            # Carrega o conteúdo do JSON para um dicionário
+        # Usa a variável CAMINHO_ARQUIVO para ler o arquivo do local certo
+        with open(CAMINHO_ARQUIVO, 'r', encoding='utf-8') as arquivo:
             dados = json.load(arquivo)
-            # Retorna os dados das listas. .get() é usado para evitar erros caso uma das chaves (clientes, tarefas, etc.) não exista no arquivo.
             return dados.get('clientes', []), dados.get('tarefas', []), dados.get('campanhas', [])
     except FileNotFoundError:
-        # Se o arquivo não for encontrado (primeira vez que o programa roda), retorna três listas vazias.
+        # Agora isso acontece se o arquivo ou a pasta não existirem
         return [], [], []
 
 def main_menu():
