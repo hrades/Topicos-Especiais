@@ -15,8 +15,11 @@ class Carro: #Declara uma nova classe chamada carro
         self.cor = 'Preto'
 
 if __name__ == '__main__':
-    print(math.__name__)
-    print(__name__)
-    var = mod.retangulo(2,5)
+    #print(math.__name__)
+    #print(__name__)
+    #var = mod.retangulo(2,5)
+    #print(var)
+    novo_carro = Carro() # Declara novo objeto com a classe Carro
+    print(novo_carro.marca)
 
-    print(var)
+
