@@ -18,17 +18,23 @@ class Carro: #Declara uma nova classe chamada carro
     def mostra_dados(self):
         return f'Marca: {self._marca}; Modelo: {self._modelo}; Ano: {self._ano}; Cor: {self._cor}'
     
-    def idade_carro(self):
-        return dt.now().year - self._ano
+    def idade_carro(self, ano=None):
+        # Se não for passado um ano, ele calcula a partir do ano atual
+        if ano is not None:
+            return ano - self._ano
+        else:
+            return dt.now().year - self._ano
 
 if __name__ == '__main__':
     #print(math.__name__)
     #print(__name__)
     #var = mod.retangulo(2,5)
     #print(var)
-    novo_carro = Carro('Ford','KA',2013,'Preto') # Declara novo objeto com a classe Carro
+    novo_carro = Carro('Ford','KA',2002,'Preto') # Declara novo objeto com a classe Carro
     outro_carro = Carro('Chevrolet', 'Onix', 2022)
     print(novo_carro.mostra_dados())
-    print(f'A idade desse carro é {novo_carro.idade_carro()} anos')
+    print(f'A idade desse carro em 2015 era {novo_carro.idade_carro(2015)} anos')
     print(outro_carro.mostra_dados())
-    print(f'A idade desse carro é {outro_carro.idade_carro()} anos')
+    print(f'A idade desse carro hoje é {outro_carro.idade_carro()} anos')
+   
+
