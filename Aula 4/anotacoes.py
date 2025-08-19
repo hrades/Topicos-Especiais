@@ -14,6 +14,8 @@ class Carro: #Declara uma nova classe chamada carro
         self._modelo = modelo
         self._ano = ano
         self._cor = cor
+    def mostra_dados(self):
+        return f'Marca: {self._marca}; Modelo: {self._modelo}; Ano: {self._ano}; Cor: {self._cor}'
 
 if __name__ == '__main__':
     #print(math.__name__)
@@ -22,6 +24,5 @@ if __name__ == '__main__':
     #print(var)
     novo_carro = Carro('Ford','KA',2013,'Preto') # Declara novo objeto com a classe Carro
     outro_carro = Carro('Chevrolet', 'Onix', 2022)
-
-
-
+    print(novo_carro.mostra_dados())
+    print(outro_carro.mostra_dados())
