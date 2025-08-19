@@ -20,6 +20,9 @@ if __name__ == '__main__':
     #var = mod.retangulo(2,5)
     #print(var)
     novo_carro = Carro() # Declara novo objeto com a classe Carro
-    print(novo_carro.marca)
+    print(novo_carro.modelo)
+    novo_carro.modelo = 'F150 Apocallipse'
+    print(novo_carro.modelo)
+
 
 
