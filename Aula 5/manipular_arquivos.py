@@ -17,3 +17,4 @@ class Anotacoes:
 
 if __name__=='__main__':
     meu_teste = Anotacoes()
+    meu_teste.ler_arquivo()
