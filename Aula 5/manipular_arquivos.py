@@ -1,6 +1,6 @@
 # Manipular arquivos com python
 
-class Anotacoes():
+class Anotacoes:
     def __init__(self):
         pass
 
@@ -16,4 +16,4 @@ class Anotacoes():
             arquivo.write('Teste de escrita em arquivo')
 
 if __name__=='__main__':
-    pass
+    meu_teste = Anotacoes()
