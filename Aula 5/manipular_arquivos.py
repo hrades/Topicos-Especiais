@@ -12,7 +12,7 @@ class Anotacoes:
         # arquivo.close()
         
         # Maneira mais fácil de utilizar o open()
-        with open(r"C:\Users\061210035\Downloads\teste.txt") as arquivo: # Método builtin para acessar um arquivo do sistema
+        with open(r"C:\Users\061210035\Downloads\teste.txt.txt", mode='w') as arquivo: # Método builtin para acessar um arquivo do sistema
             arquivo.write('Teste de escrita em arquivo')
 
 if __name__=='__main__':
