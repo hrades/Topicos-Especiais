@@ -21,7 +21,7 @@ class Anotacoes:
     def ler_arquivo(self):
         with open(r"C:\Users\061210035\Downloads\dados.csv", mode='r', encoding='UTF-8') as dados:
             for linha in dados:
-                print(linha)
+                print(linha.strip().split(','))
 
 
 if __name__=='__main__':
