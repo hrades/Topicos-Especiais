@@ -7,7 +7,7 @@ class Anotacoes:
     def __doc__(self):
         return 'Esta é uma classe que trabalha a manipulação de arquivos de texto'
     
-    def ler_arquivo(self):
+    def escrever_teste(self):
         # arquivo = open()
         # arquivo.close()
         
@@ -17,6 +17,10 @@ class Anotacoes:
             # 'r' : read
             # 'a' : append
             arquivo.write('Teste de escrita em arquivo')
+
+    def ler_arquivo(self):
+        with open(r"C:\Users\061210035\Downloads\dados.csv", mode='r') as dados:
+            dados
 
 
 if __name__=='__main__':
