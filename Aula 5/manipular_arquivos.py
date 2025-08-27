@@ -5,7 +5,7 @@ class Anotacoes:
         pass
 
     def __doc__(self):
-        return 'Esta é uma classe que trabalha a manipulação de arquivos de texto'
+        return 'Esta é uma classe que trabalha a manipulação de arquivos de texto (txt, csv...)'
     
     def escrever_teste(self):
         # arquivo = open()
@@ -20,7 +20,7 @@ class Anotacoes:
 
     def ler_arquivo(self):
         with open(r"C:\Users\061210035\Downloads\dados.csv", mode='r') as dados:
-            dados
+            print(dados.readlines())
 
 
 if __name__=='__main__':
