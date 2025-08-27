@@ -19,7 +19,7 @@ class Anotacoes:
             arquivo.write('Teste de escrita em arquivo')
 
     def ler_arquivo(self):
-        with open(r"C:\Users\061210035\Downloads\dados.csv", mode='r') as dados:
+        with open(r"C:\Users\061210035\Downloads\dados.csv", mode='r', encoding='UTF-8') as dados:
             for linha in dados:
                 print(linha)
 
