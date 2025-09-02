@@ -5,7 +5,7 @@ class AnaliseVendas:
         self.lista_dados = []
 
     def ler_arquivo(self):
-        with open(self.endereco, mode='r') as dados:
+        with open(self.endereco, mode='r', encoding='utf-8') as dados:
             for linha in dados:
                 listinha = linha.strip().split(',')
                 if linha: 
@@ -74,8 +74,7 @@ class AnaliseVendas:
         total_valor = self.valor_total()
         total_carros = self.contar_vendas()
         return total_valor/total_carros
-    
-    
+     
     def vendas_atuais(self):
         mes_atual = date.today().month
         ano_atual = date.today().year
@@ -92,6 +91,17 @@ class AnaliseVendas:
                     vendas_mes.append(dado)
             cont_aux+=1
         return vendas_mes
+    
+    def adicionar_venda(self, data, marca, modelo, ano, fabricante, cor, preco, vendedor, cliente):
+        lista_colunas = [(self.contar_vendas()+1), data, marca, modelo, ano, fabricante, cor, preco, vendedor, cliente]
+        texto = f'{(self.contar_vendas()+1)}'
+        for coluna in lista_colunas:
+            if coluna != self.contar_vendas()+1:
+                texto = f'{texto},{coluna}'
+        with open(self.endereco, mode= 'a', encoding= 'utf-8') as arquivo:
+            arquivo.write(f'\n{texto}')
+        self.lista_dados.append(lista_colunas)
+        return self.lista_dados[-1]
         
 
 if __name__=='__main__':
@@ -105,3 +115,4 @@ if __name__=='__main__':
     print(vendas.vendedores())
     print(vendas.media_valor_vendido())
     print(vendas.vendas_atuais())
+    print(vendas.adicionar_venda('2025-09-01','Hyundai','Azera','2022','Hyundai','Prata','178000','Fernanda Campos','Ana Paula Costa'))
