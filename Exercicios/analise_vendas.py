@@ -1,10 +1,11 @@
+from datetime import date
 class AnaliseVendas:
     def __init__(self, endereco):
-        self._endereco = endereco
+        self.endereco = endereco
         self.lista_dados = []
 
     def ler_arquivo(self):
-        with open(self._endereco, mode='r', encoding='UTF-8') as dados:
+        with open(self.endereco, mode='r') as dados:
             for linha in dados:
                 listinha = linha.strip().split(',')
                 if linha: 
@@ -70,13 +71,20 @@ class AnaliseVendas:
         total_valor = self.valor_total()
         total_carros = self.contar_vendas()
         return total_valor/total_carros
+    
+    @staticmethod
+    def vendas_atuais():
+        mes_atual = date.today().month
+        ano_atual = date.today().year
+        return mes_atual, ano_atual
 
 if __name__=='__main__':
     #vendas = AnaliseVendas(r"Z:\Topicos-Especiais\Dados\dados.csv")
-    vendas = AnaliseVendas(r"D:\Topicos Especiais\Meus Códigos\Topicos-Especiais\Dados")
+    vendas = AnaliseVendas(r"D:\Topicos Especiais\Meus Códigos\Topicos-Especiais\Dados\dados.csv")
     vendas.ler_arquivo()
     print(vendas.contar_vendas())
     print(vendas.valor_total())
     print(vendas.marcas())
     print(vendas.vendedores())
     print(vendas.media_valor_vendido())
+    print(vendas.vendas_atuais())
