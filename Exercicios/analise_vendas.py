@@ -11,6 +11,9 @@ class AnaliseVendas:
                 if linha: 
                     self.lista_dados.append(listinha)
 
+    def ver_cabecalho(self):
+        return self.lista_dados[0]
+
     def contar_vendas(self):
         return len(self.lista_dados)-1
     
@@ -72,16 +75,30 @@ class AnaliseVendas:
         total_carros = self.contar_vendas()
         return total_valor/total_carros
     
-    @staticmethod
-    def vendas_atuais():
+    
+    def vendas_atuais(self):
         mes_atual = date.today().month
         ano_atual = date.today().year
-        return mes_atual, ano_atual
+        if mes_atual<10:
+            atual = f'{ano_atual}-0{mes_atual}'
+        else:
+            atual = f'{ano_atual}-{mes_atual}'
+        vendas_mes = []
+        cont_aux = 0
+        for dado in self.lista_dados:
+            if cont_aux>0:
+                data = dado[1]
+                if data[0:7]==atual:
+                    vendas_mes.append(dado)
+            cont_aux+=1
+        return vendas_mes
+        
 
 if __name__=='__main__':
     #vendas = AnaliseVendas(r"Z:\Topicos-Especiais\Dados\dados.csv")
     vendas = AnaliseVendas(r"D:\Topicos Especiais\Meus Códigos\Topicos-Especiais\Dados\dados.csv")
     vendas.ler_arquivo()
+    print(vendas.ver_cabecalho())
     print(vendas.contar_vendas())
     print(vendas.valor_total())
     print(vendas.marcas())
