@@ -9,10 +9,13 @@ while True:
     
     # Moedas de 1
     if valor_reais>0:
-        moedas_1 = valor_reais//1
+        moedas_1 = valor_reais%1
         moedas['1 real'] = moedas_1
         valor_reais -= moedas_1
         print(valor_reais)
+
+    '''else:
+        if valor_reais'''
 
     print(moedas)
     print(valor_reais)

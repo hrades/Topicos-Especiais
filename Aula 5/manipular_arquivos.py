@@ -29,6 +29,6 @@ class Anotacoes:
 
 
 if __name__=='__main__':
-    meu_teste = Anotacoes(r"C:\Users\061210035\Downloads\dados.csv")
-    meu_teste.adicionar_dados('11,2025-08-25,Mariana Costa,Câmera Canon EOS Rebel T7,1,3200.00')
+    meu_teste = Anotacoes(r"Z:\Topicos-Especiais\Dados\dados.csv")
+    #meu_teste.adicionar_dados('11,2025-08-25,Mariana Costa,Câmera Canon EOS Rebel T7,1,3200.00')
     meu_teste.ler_arquivo()
