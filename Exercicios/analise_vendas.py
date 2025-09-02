@@ -65,11 +65,18 @@ class AnaliseVendas:
             vendas_por_vendedor[vendedor] = vendas.count(vendedor)
 
         return vendas_por_vendedor
+    
+    def media_valor_vendido(self):
+        total_valor = self.valor_total()
+        total_carros = self.contar_vendas()
+        return total_valor/total_carros
 
 if __name__=='__main__':
-    vendas = AnaliseVendas(r"Z:\Topicos-Especiais\Dados\dados.csv")
+    #vendas = AnaliseVendas(r"Z:\Topicos-Especiais\Dados\dados.csv")
+    vendas = AnaliseVendas(r"D:\Topicos Especiais\Meus Códigos\Topicos-Especiais\Dados")
     vendas.ler_arquivo()
     print(vendas.contar_vendas())
     print(vendas.valor_total())
     print(vendas.marcas())
     print(vendas.vendedores())
+    print(vendas.media_valor_vendido())
