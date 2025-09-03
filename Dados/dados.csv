@@ -1,5 +1,5 @@
 ID,Data da Venda,Marca,Modelo,Ano,Fabricante,Cor,Preço,Vendedor,Nome do Cliente
-1,2025-08-15,Chevrolet,Onix,2022,GM,Branco,72000,Marcos Lima,Ana Paula Costa
+1,2025-09-15,Chevrolet,Onix,2022,GM,Branco,72000,Marcos Lima,Ana Paula Costa
 2,2025-08-17,Ford,Ka,2021,Ford,Preto,55000,Juliana Rios,Bruno Martins
 3,2025-08-20,Toyota,Corolla,2023,Toyota,Prata,129000,Cláudio Vieira,Renata Alves
 4,2025-08-25,Honda,Civic,2022,Honda,Cinza,118000,Marcos Lima,Felipe Souza
@@ -49,3 +49,5 @@ ID,Data da Venda,Marca,Modelo,Ano,Fabricante,Cor,Preço,Vendedor,Nome do Cliente
 48,2025-06-24,Ford,Bronco,2023,Ford,Preto,229000,Aline Torres,Sérgio Lopes
 49,2025-06-10,Hyundai,Azera,2022,Hyundai,Prata,178000,Cláudio Vieira,Teresa Guerra
 50,2025-06-11,Renault,Stepway,2021,Renault,Branco,67000,Rafael Dias,Caio Martins
+51,2025-06-10,Hyundai,Azera,2022,Hyundai,Prata,178000,Cláudio Vieira,Ana Paula Costa
+52,2025-09-01,Hyundai,Azera,2022,Hyundai,Prata,178000,Fernanda Campos,Ana Paula Costa
