@@ -1,11 +1,14 @@
 import tkinter
 
+# Classe responsável por criar e montar as ferramentas da GUI
 class Aplicativo:
-    def __init__(self):
-        pass
+    def __init__(self, parent): #parent é o objeto do tipo canvas
+        lbl_texto =  tkinter.Label(window, text= 'Test')
+        lbl_texto.pack()
 
 if __name__ == "__main__":
     window = tkinter.Tk() #Declara um objeto tipo canvas (janela)
     window.geometry('500x500') # X e Y
     window.title('GUI teste') #Nome da tela
+
     window.mainloop() #Laço de repetição que mantém a tela ativa e funcional
