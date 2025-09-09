@@ -21,11 +21,14 @@ class Aplicativo:
                                 font=('Arial', 12),
                                 foreground='black',
                                 background=self.back_color)
+        self.bot_apagar = tk.Button(parent, text='Apagar',
+                                        command=self.apagar_msg)
         #Montagem
         self.lbl_texto.pack() #mostrar na janela
         self.bot_teste.pack()
         self.txtbox_teste.pack()
         self.bot_msg.pack()
+        self.bot_apagar.pack()
         self.lbl_msg.pack()
 
     def trocar_cor_texto(self):
@@ -42,6 +45,9 @@ class Aplicativo:
             self.lbl_msg.config(text=f"Você digitou: {msg}")
         else:
             self.lbl_msg.config(text="Mensagem vazia! Digite algo.")
+
+    def apagar_msg(self):
+        self.lbl_msg.config(text=f"")
 
 if __name__ == "__main__":
     window = tk.Tk() #Declara um objeto tipo canvas (janela)
