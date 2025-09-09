@@ -23,6 +23,10 @@ class Aplicativo:
                                 background=self.back_color)
         self.bot_apagar = tk.Button(parent, text='Apagar',
                                         command=self.apagar_msg)
+        
+        self.tela()
+
+    def tela(self):
         #Montagem
         self.lbl_texto.pack() #mostrar na janela
         self.bot_teste.pack()
