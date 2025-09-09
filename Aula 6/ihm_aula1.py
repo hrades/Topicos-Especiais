@@ -3,7 +3,9 @@ import tkinter
 # Classe responsável por criar e montar as ferramentas da GUI
 class Aplicativo:
     def __init__(self, parent): #parent é o objeto do tipo canvas
-        lbl_texto =  tkinter.Label(parent, text= 'Teste') #objeto tipo texto
+        lbl_texto =  tkinter.Label(parent, text= 'Teste',  #objeto tipo texto
+                                   font=('Arial', 14, 'italic', 'underline'),
+                                   foreground='dark blue') 
         lbl_texto.pack() #mostrar na janela
 
 if __name__ == "__main__":
