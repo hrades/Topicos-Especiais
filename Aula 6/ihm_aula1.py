@@ -6,11 +6,15 @@ class Aplicativo:
         back_color = "#EBEBEB"
         font_color = '#87CEFA'
         parent.config(background=back_color)
+        # Ferramentas
         lbl_texto =  tkinter.Label(parent, text= 'Teste',  #objeto tipo texto
                                    font=('Arial', 14, 'italic', 'underline'),
                                    foreground=font_color,
                                    background=back_color)
+        bot_teste = tkinter.Button(parent, text='Clique aqui')
+        #Montagem
         lbl_texto.pack() #mostrar na janela
+        bot_teste.pack()
 
 if __name__ == "__main__":
     window = tkinter.Tk() #Declara um objeto tipo canvas (janela)
