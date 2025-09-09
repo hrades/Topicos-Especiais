@@ -5,7 +5,7 @@ class Aplicativo:
     def __init__(self, parent): #parent é o objeto do tipo canvas
         lbl_texto =  tkinter.Label(parent, text= 'Teste',  #objeto tipo texto
                                    font=('Arial', 14, 'italic', 'underline'),
-                                   foreground='dark blue') 
+                                   foreground='#87CEFA') 
         lbl_texto.pack() #mostrar na janela
 
 if __name__ == "__main__":
