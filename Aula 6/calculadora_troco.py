@@ -5,17 +5,21 @@ class NotasMoedas():
         self.reais = reais
 
     def calcular_troco(self, valor):
-        dinheiro = self.reais//valor
-        if valor>1:
-            self.troco[f'{valor} reais'] = dinheiro
-        elif valor<1:
-            self.troco[f'{valor*100} cents'] = dinheiro
-        elif valor==1:
-            self.troco['1 real'] = dinheiro
-        return self.reais%valor
+        try:
+            dinheiro = self.reais//valor
+            if valor>1:
+                self.troco[f'{valor} reais'] = dinheiro
+            elif valor<1:
+                self.troco[f'{valor*100} cents'] = dinheiro
+            elif valor==1:
+                self.troco['1 real'] = dinheiro
+            return self.reais%valor
+        except:
+            return None
     
     def mostrar_troco(self):
+ 
         for real in self.notas:
             if self.reais>=real:
-                self.reais = round(self.calcular_troco(real, self.reais), 2)
+                self.reais = round(self.calcular_troco(real), 2)
         return self.troco

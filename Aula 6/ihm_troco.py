@@ -8,7 +8,7 @@ class AplicativoTroco():
 
         self.txtbox_valor = tk.Entry()
         self.bot_computar = tk.Button(parent, text='Calcular troco',
-                                        command=self.converter_texto)
+                                        command=self.resultado)
         self.bot_apagar = tk.Button(parent, text='Apagar mensagem',
                                         command=self.apagar_msg)
         self.lbl_msg = tk.Label(parent, text="",
@@ -25,8 +25,7 @@ class AplicativoTroco():
         entrada = self.txtbox_valor.get()
         try: 
             num = float(entrada) # Verificar se é possível fazer isso
-            self.lbl_msg.config(text=f'{num}')
-            #return num
+            return num
         except:
             self.lbl_msg.config(text='Erro! Digite um número', foreground='red')
             return None
@@ -34,9 +33,14 @@ class AplicativoTroco():
     def apagar_msg(self):
         self.lbl_msg.config(text=f"")
 
+    def resultado(self):
+        valor = self.converter_texto()
+        moedas = NotasMoedas(valor)
+        self.lbl_msg.config(text=f'{moedas.mostrar_troco()}')
+
 if __name__=="__main__":
     window = tk.Tk() #Declara um objeto tipo canvas (janela)
-    window.geometry('500x500') # X e Y
+    window.geometry('200x200') # X e Y
     window.title('Calculadora de troco') #Nome da tela
     AplicativoTroco(window) #executa a classe Aplicativo com argumento como o canvas
     
