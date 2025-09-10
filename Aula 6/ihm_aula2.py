@@ -6,4 +6,6 @@ class Aplicativo:
 
 
 if __name__ == "__main__":
-    pass
+    tela = tk.Tk()
+
+    tela.mainloop()
