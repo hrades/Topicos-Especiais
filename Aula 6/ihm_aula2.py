@@ -7,14 +7,14 @@ class Aplicativo:
         # Ferramentas
         self.tbox_entrada = tk.Entry()
         self.lbl_resultado = tk.Label(parent, text='Resultado')
-        self.bot_calcular = tk.Button(parent, text='Calcular', command=self.calcular_algo)
+        self.bot_calcular = tk.Button(parent, text='Calcular', command=self.calcular_dobro)
 
         # Mostrar
         self.tbox_entrada.pack()
         self.lbl_resultado.pack()
         self.bot_calcular.pack()
 
-    def calcular_algo(self): # Associado ao bot_calcular
+    def calcular_dobro(self): # Associado ao bot_calcular
         try:
             numero = self.tbox_entrada.get() # Pega o valor do textbox, retornando o texto
             numero = float(numero)
