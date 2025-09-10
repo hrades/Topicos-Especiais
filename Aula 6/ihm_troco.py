@@ -22,7 +22,7 @@ class AplicativoTroco():
         self.lbl_msg.pack()
 
     def converter_texto(self):
-        entrada = self.txtbox_valor
+        entrada = self.txtbox_valor.get()
         try: 
             num = float(entrada) # Verificar se é possível fazer isso
             self.lbl_msg.config(text=f'{num}')
