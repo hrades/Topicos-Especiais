@@ -23,6 +23,7 @@ class AplicativoTroco():
 
     def converter_texto(self):
         entrada = self.txtbox_valor.get()
+        entrada = entrada.replace(',','.')
         try: 
             num = float(entrada) # Verificar se é possível fazer isso
             return num
@@ -36,7 +37,7 @@ class AplicativoTroco():
     def resultado(self):
         valor = self.converter_texto()
         moedas = NotasMoedas(valor)
-        self.lbl_msg.config(text=f'{moedas.mostrar_troco()}')
+        self.lbl_msg.config(text=f'{moedas.mostrar_troco()}', foreground='black')
 
 if __name__=="__main__":
     window = tk.Tk() #Declara um objeto tipo canvas (janela)
