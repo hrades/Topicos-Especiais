@@ -18,6 +18,9 @@ class Aplicativo:
         self.bot_cor.pack(anchor='e')
         self.lbl_cor.pack(pady=15)
 
+    def change_color(self):
+        pass
+
 if __name__=="__main__":
     window = tk.Tk()
     Aplicativo(window)
