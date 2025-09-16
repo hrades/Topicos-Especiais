@@ -50,6 +50,16 @@ class Aplicativo:
                     self.cmbbox_escolha.config(values=self.cores)
             except:
                 self.lbl_cor.config(background=cor,foreground='black', text='Escolha uma cor')
+        
+        if self.str_opt.get() == 'OP1':
+            self.lbl_title.config(text='Escolha uma cor')
+        elif self.str_opt.get() == 'OP2':
+            self.lbl_title.config(text='Mude as cores')
+        elif self.str_opt.get() == 'OP3':
+            self.lbl_title.config(text='Escolha 1 cor e clique no botão')
+        else:
+            self.lbl_title.config(text='Seja bem vindo!')
+
 
 if __name__=="__main__":
     window = tk.Tk()
