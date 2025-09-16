@@ -12,6 +12,16 @@ class Aplicativo:
                                            values=self.cores)
         self.lbl_cor = ttk.Label(parent, text='Cor', font=('Arial', 14))
         self.bot_cor = ttk.Button(parent, text='Mudar cor', command=self.change_color)
+        self.str_opt = tk.StringVar()
+        self.rdb_option1 = ttk.Radiobutton(parent, text='Opção 1',
+                                           variable=self.str_opt,
+                                           value='OP1')
+        self.rdb_option2 = ttk.Radiobutton(parent, text='Opção 2',
+                                           variable=self.str_opt,
+                                           value='OP2')
+        self.rdb_option3 = ttk.Radiobutton(parent, text='Opção 3',
+                                           variable=self.str_opt,
+                                           value='OP3')
         
         self.show_app()
 
@@ -20,6 +30,9 @@ class Aplicativo:
         self.cmbbox_escolha.pack()
         self.bot_cor.pack(anchor='e')
         self.lbl_cor.pack(pady=15)
+        self.rdb_option1.pack(anchor='w')
+        self.rdb_option2.pack(anchor='w')
+        self.rdb_option3.pack(anchor='w')
 
     def change_color(self):
         cor = self.cmbbox_escolha.get()
