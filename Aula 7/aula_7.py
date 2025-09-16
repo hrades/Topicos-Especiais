@@ -6,4 +6,6 @@ class Aplicativo:
         pass
 
 if __name__=="__main__":
-    pass
+    window = tk.Tk()
+
+    window.mainloop()
