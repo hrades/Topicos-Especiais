@@ -28,7 +28,6 @@ class Aplicativo:
             self.lbl_cor.config(background=cor,foreground='white',text=cor)
         else:
             try: # Se a cor for válida, ela é adicionada à lista de cores
-                
                 if cor not in self.cores and cor != '':
                     self.cores.append(cor)
                 if cor == '':
@@ -37,7 +36,7 @@ class Aplicativo:
                     self.lbl_cor.config(background=cor,foreground='white', text=cor)
                     self.cmbbox_escolha.config(values=self.cores)
             except:
-                pass
+                self.lbl_cor.config(background=cor,foreground='black', text='Escolha uma cor')
 
 if __name__=="__main__":
     window = tk.Tk()
