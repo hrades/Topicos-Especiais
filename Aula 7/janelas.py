@@ -4,6 +4,10 @@ from tkinter import ttk
 class Aplicativo:
     def __init__(self, parent: tk.Tk):
         parent.geometry('200x200')
+
+        parent.columnconfigure((0,1), weight=1)  # Divisão igual da janela para redimensionamento das colunas
+        parent.rowconfigure((1,2), weight=1)  # Divisão igual da janela para redimensionamento das colunas
+
         self.fr_quadro1 = ttk.LabelFrame(parent, text='Quadro 1') # Texto + linha da moldura
         self.lbl_texto1 = ttk.Label(self.fr_quadro1, text='Texto 1')
         self.fr_quadro2 = ttk.Frame(parent, relief='groove') # Apenas a moldura - n necessariamente aparente
