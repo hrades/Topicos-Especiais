@@ -10,7 +10,7 @@ class Aplicativo:
 
         self.fr_quadro1.pack()
         self.lbl_texto1.pack()
-        self.fr_quadro2.pack()
+        self.fr_quadro2.pack(ipadx=3, ipady=3) # Adicionando margens
         self.lbl_texto2.pack()
 
 if __name__ == "__main__":
