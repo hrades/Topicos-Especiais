@@ -9,6 +9,9 @@ class Aplicativo:
         self.fr_quadro2 = ttk.Frame(parent, relief='groove') # Apenas a moldura - n necessariamente aparente
         self.lbl_texto2 = ttk.Label(self.fr_quadro2, text='Texto 2')
 
+        # self.show_pack() # Utilizando o pack para mostrar na tela
+
+    def show_pack(self):
         self.fr_quadro1.pack()
         self.lbl_texto1.pack()
         self.fr_quadro2.pack(ipadx=3, ipady=3) # Adicionando margens
