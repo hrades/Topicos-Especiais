@@ -24,8 +24,9 @@ class Aplicativo:
         self.lbl_texto3.pack()
 
     def show_grid(self):
-        self.fr_quadro1.grid(row=0, column=0, columnspan=2)
-        self.fr_quadro2.grid(row=1, column=0)
+        self.fr_quadro1.grid(row=0, column=0, 
+                             columnspan=2) # Mescla duas colunas
+        self.fr_quadro2.grid(row=1, column=0, ipadx=5, ipady=5)
         self.fr_quadro3.grid(row=1, column=1)
 
 if __name__ == "__main__":
