@@ -8,6 +8,9 @@ class Aplicativo:
         self.lbl_texto1 = ttk.Label(self.fr_quadro1, text='Texto 1')
         self.fr_quadro2 = ttk.Frame(parent, relief='groove') # Apenas a moldura - n necessariamente aparente
         self.lbl_texto2 = ttk.Label(self.fr_quadro2, text='Texto 2')
+        self.fr_quadro3 = ttk.Frame(parent, relief='groove') 
+        self.lbl_texto3 = ttk.Label(self.fr_quadro3, text='Texto 3')
+        
 
         self.show_grid()
         self.show_pack() # Utilizando o pack para mostrar na tela
@@ -17,11 +20,13 @@ class Aplicativo:
     def show_pack(self):
         self.lbl_texto1.pack()
         #self.fr_quadro2.pack(ipadx=3, ipady=3) # Adicionando margens
-        self.lbl_texto2.pack()
+        self.lbl_texto2.pack(pady=5)
+        self.lbl_texto3.pack()
 
     def show_grid(self):
-        self.fr_quadro1.grid(row=0, column=0)
-        self.fr_quadro2.grid(row=0, column=1)
+        self.fr_quadro1.grid(row=0, column=0, columnspan=2)
+        self.fr_quadro2.grid(row=1, column=0)
+        self.fr_quadro3.grid(row=1, column=1)
 
 if __name__ == "__main__":
     janela = tk.Tk()
