@@ -14,12 +14,17 @@ class Aplicativo:
         messagebox.showinfo('Informação!', 'Ontem choveu muito')
         messagebox.showwarning('Aviso!', 'Pode ser que hoje chova novamente')
         messagebox.showerror('Problemas!', 'Queda de árvores e enchentes')
+        
+
+    def exemplo(self):
         messagebox.showinfo(title='Questão',
                             message='Responda rápido',
                             icon='question')
-
-    def exemplo(self):
-        pass
+        resposta = messagebox.askyesno('Para hoje', 'Você trouxe seu guarda-chuva?')
+        if resposta == tk.YES:
+            messagebox.showinfo('Boa', 'Você está preparado para a chuva')
+        else:
+            messagebox.showwarning('Cuidado', 'Pegue um guarda-chuva. Vai chover')
 
 if __name__ == "__main__":
     janela = tk.Tk()
