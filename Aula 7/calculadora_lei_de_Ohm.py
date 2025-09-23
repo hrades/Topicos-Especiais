@@ -17,13 +17,16 @@ class Aplicativo():
         self.str_opt = tk.StringVar()
         self.rdb_tensao = ttk.Radiobutton(self.fr_quadro1, text='Tensão',
                                            variable=self.str_opt,
-                                           value='V')
+                                           value='V',
+                                           command=self.update_label)
         self.rdb_corrente = ttk.Radiobutton(self.fr_quadro1, text='Corrente',
                                            variable=self.str_opt,
-                                           value='A')
+                                           value='A',
+                                           command=self.update_label)
         self.rdb_resistencia = ttk.Radiobutton(self.fr_quadro1, text='Resistência',
                                            variable=self.str_opt,
-                                           value='R')
+                                           value='R',
+                                           command=self.update_label)
         self.fr_quadro2 = ttk.Frame(parent,relief='groove')
         self.lbl_valor1 = ttk.Label(self.fr_quadro2, text='Valor 1: ')
         self.txb_valor1 = ttk.Entry(self.fr_quadro2)
@@ -57,6 +60,20 @@ class Aplicativo():
 
     def close_app(self):
         pass
+
+    def update_label(self):
+        # Obtém o valor do Radiobutton selecionado (V, A ou R)
+        escolha = self.str_opt.get()
+
+        if escolha == 'V':
+            self.lbl_valor1.config(text='Corrente (A):')
+            self.lbl_valor2.config(text='Resistência (Ω):')
+        elif escolha == 'A':
+            self.lbl_valor1.config(text='Tensão (V):')
+            self.lbl_valor2.config(text='Resistência (Ω):')
+        elif escolha == 'R':
+            self.lbl_valor1.config(text='Tensão (V):')
+            self.lbl_valor2.config(text='Corrente (A):')
 
 if __name__ == "__main__":
     window = tk.Tk()
