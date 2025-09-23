@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import ttk
-from Exercicios import modulo_exercicios as mde
 
 class Aplicativo():
     def  __init__(self, parent: tk.Tk):
@@ -17,5 +16,3 @@ if __name__ == "__main__":
     window = tk.Tk()
     Aplicativo(window)
     window.mainloop()
-
-    mde.Exercicios.primeira_lei_ohm()
