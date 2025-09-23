@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from leis_de_ohm import LeiDeOhm
 
 class Aplicativo():
@@ -56,7 +56,20 @@ class Aplicativo():
         self.bot_fechar.grid(row=2,column=1,pady=5)
 
     def calcular(self):
-        pass
+        calculo = self.str_opt.get()
+        valor1 = self.txb_valor1.get()
+        valor2 = self.txb_valor2.get()
+        if calculo == 'V':
+            resultado = LeiDeOhm.primeira_lei(corrente=valor1, resistencia=valor2)
+        elif calculo == 'A':
+            resultado = LeiDeOhm.primeira_lei(tensao=valor1, resistencia=valor2)
+        elif calculo == 'R':
+            resultado = LeiDeOhm.primeira_lei(tensao=valor1, corrente=valor2)
+        else:
+            resultado = 'select'
+
+        self.lbl_resultado.config(text=f'Resultado: {str(resultado)}')
+
 
     def close_app(self):
         pass
