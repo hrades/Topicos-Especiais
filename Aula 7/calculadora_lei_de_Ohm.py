@@ -7,6 +7,7 @@ class Aplicativo():
         self.parent = parent
         self.parent.geometry('215x245')
         self.parent.resizable(False, False)
+        self.parent.protocol("WM_DELETE_WINDOW", self.disable_close)
         self.features(parent)    
         self.show_pack()
         self.show_grid()
@@ -83,10 +84,12 @@ class Aplicativo():
         else:
             self.lbl_resultado.config(text=f'Resultado: {str(resultado)}')
 
-
     def close_app(self):
         if messagebox.askyesno('Encerrar', 'Deseja encerrar a aplicação?') == tk.YES:
             self.parent.destroy()
+
+    def disable_close(self):
+        messagebox.showinfo('Encerrar', 'Utilize o botão "Fechar aplicação" para encerrar')
 
     def update_label(self):
         # Obtém o valor do Radiobutton selecionado (V, A ou R)
