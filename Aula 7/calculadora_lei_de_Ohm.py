@@ -4,8 +4,9 @@ from leis_de_ohm import LeiDeOhm
 
 class Aplicativo():
     def  __init__(self, parent: tk.Tk):
-        parent.geometry('215x245')
-        parent.resizable(False, False)
+        self.parent = parent
+        self.parent.geometry('215x245')
+        self.parent.resizable(False, False)
         self.features(parent)    
         self.show_pack()
         self.show_grid()
@@ -84,7 +85,8 @@ class Aplicativo():
 
 
     def close_app(self):
-        pass
+        if messagebox.askyesno('Encerrar', 'Deseja encerrar a aplicação?') == tk.YES:
+            self.parent.destroy()
 
     def update_label(self):
         # Obtém o valor do Radiobutton selecionado (V, A ou R)
