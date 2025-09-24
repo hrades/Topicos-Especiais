@@ -5,8 +5,7 @@ from leis_de_ohm import LeiDeOhm
 class Aplicativo():
     def  __init__(self, parent: tk.Tk):
         parent.geometry('215x245')
-        parent.columnconfigure((0,1), weight=1)
-        parent.rowconfigure((0,1,2,3), weight=1)
+        parent.resizable(False, False)
         self.features(parent)    
         self.show_pack()
         self.show_grid()
@@ -77,6 +76,8 @@ class Aplicativo():
 
         if resultado == 'select':
             messagebox.showwarning('Seleção!', 'Selecione uma das opções para calcular')
+            self.lbl_resultado.config(text=f'Resultado: ')
+        elif resultado == 'Erro':
             self.lbl_resultado.config(text=f'Resultado: ')
         else:
             self.lbl_resultado.config(text=f'Resultado: {str(resultado)}')
