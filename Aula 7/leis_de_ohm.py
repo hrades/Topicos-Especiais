@@ -11,8 +11,8 @@ class LeiDeOhm:
                 return tensao/resistencia
             elif resistencia==None:
                 return tensao/corrente
-        except Exception as e:
-            return e
+        except:
+            return 'Erro'
         
     @staticmethod
     def segunda_lei(resistencia=None):

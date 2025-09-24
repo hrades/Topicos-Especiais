@@ -59,6 +59,12 @@ class Aplicativo():
         calculo = self.str_opt.get()
         valor1 = self.txb_valor1.get()
         valor2 = self.txb_valor2.get()
+        try:
+            valor1 = float(valor1)
+            valor2 = float(valor2)
+        except:
+            messagebox.showerror('Erro!', 'Digite um número') #exemplo
+
         if calculo == 'V':
             resultado = LeiDeOhm.primeira_lei(corrente=valor1, resistencia=valor2)
         elif calculo == 'A':
@@ -68,7 +74,11 @@ class Aplicativo():
         else:
             resultado = 'select'
 
-        self.lbl_resultado.config(text=f'Resultado: {str(resultado)}')
+        if resultado == 'select':
+            messagebox.showwarning('Atenção!', 'Selecione uma das opções para calcular')
+            self.lbl_resultado.config(text=f'Resultado: ')
+        else:
+            self.lbl_resultado.config(text=f'Resultado: {str(resultado)}')
 
 
     def close_app(self):
