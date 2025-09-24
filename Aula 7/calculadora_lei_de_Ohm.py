@@ -4,13 +4,13 @@ from leis_de_ohm import LeiDeOhm
 
 class Aplicativo():
     def  __init__(self, parent: tk.Tk):
-        self.parent = parent
-        self.parent.geometry('215x245')
-        self.parent.resizable(False, False)
-        self.parent.protocol("WM_DELETE_WINDOW", self.disable_close)
-        self.features(parent)    
-        self.show_pack()
-        self.show_grid()
+        self.parent = parent # Define a variável self.parent como parent para utilizar fora do __init__
+        parent.geometry('215x240') # Fixa a janela com um tamanho
+        parent.resizable(False, False) # Desabilita redimensionamento da janela
+        parent.protocol("WM_DELETE_WINDOW", self.disable_close) # Atribui a função disable_close para o botão de fechar
+        self.features(parent) # Cria os elementos da janela
+        self.show_pack() # Coloca elementos na janela
+        self.show_grid() # Coloca elementos dentro de outros elementos na janela
 
     def features(self, parent):
         self.lbl_lei = ttk.Label(parent, text='Calculadora 1ª Lei de Ohm', font=('Calibri Light',14))
@@ -19,7 +19,7 @@ class Aplicativo():
         self.rdb_tensao = ttk.Radiobutton(self.fr_quadro1, text='Tensão',
                                            variable=self.str_opt,
                                            value='V',
-                                           command=self.update_label)
+                                           command=self.update_label) # command adicionado para chamar função ao clicar no radiobutton
         self.rdb_corrente = ttk.Radiobutton(self.fr_quadro1, text='Corrente',
                                            variable=self.str_opt,
                                            value='A',
@@ -38,7 +38,7 @@ class Aplicativo():
         self.lbl_resultado = ttk.Label(self.fr_quadro3, text='Resultado: ')
         self.bot_fechar = ttk.Button(parent, text='Fechar aplicação',command=self.close_app)
 
-    def show_pack(self):
+    def show_pack(self): # Posicionamento dos elementos relacionados à janela
         self.lbl_lei.pack(anchor='w')
         self.fr_quadro1.pack(anchor='w', pady=5)
         self.fr_quadro2.pack(anchor='w', pady=5)
@@ -46,7 +46,7 @@ class Aplicativo():
         self.fr_quadro3.pack(anchor='w',pady=5)
         self.bot_fechar.pack(anchor='e', pady=5)
         
-    def show_grid(self):
+    def show_grid(self): # Posicionamento de elementos relacionados a outros elementos
         self.rdb_tensao.grid(row=0, column=0)
         self.rdb_corrente.grid(row=0, column=1)
         self.rdb_resistencia.grid(row=0, column=2)
@@ -57,45 +57,46 @@ class Aplicativo():
         self.lbl_resultado.grid(row=1,column=0, pady=5)
 
     def calcular(self):
-        calculo = self.str_opt.get()
-        valor1 = self.txb_valor1.get()
-        valor2 = self.txb_valor2.get()
-        try:
+        calculo = self.str_opt.get() # Pega o valor retornado pelo radiobutton selecionado
+        valor1 = self.txb_valor1.get() # Pega o valor no 1º textbox
+        valor2 = self.txb_valor2.get() # Pega o valor no 2º textbox
+        try: # Testa conversão de valores para o cálculo
             valor1 = float(valor1)
             valor2 = float(valor2)
-        except:
-            if calculo != '':
+        except: # Se um dos valores der erro, mostra messagebox de erro de leitura
+            if calculo != '': # O radiobutton deve ter sido selecionado
                 messagebox.showerror('Erro de leitura!', 'Digite números para realizar o cálculo') #exemplo
 
+        # Calcula de acordo com o valor selecionado
         if calculo == 'V':
             resultado = LeiDeOhm.primeira_lei(corrente=valor1, resistencia=valor2)
         elif calculo == 'A':
             resultado = LeiDeOhm.primeira_lei(tensao=valor1, resistencia=valor2)
         elif calculo == 'R':
             resultado = LeiDeOhm.primeira_lei(tensao=valor1, corrente=valor2)
-            calculo = 'Ω'
+            calculo = 'Ω' # muda o valor para formatar o resultado
         else:
             resultado = 'select'
 
-        if resultado == 'select':
+        if resultado == 'select': # Mostra erro de seleção se nada for selecionado para calcular
             messagebox.showwarning('Seleção!', 'Selecione uma das opções para calcular')
             self.lbl_resultado.config(text=f'Resultado: ')
-        elif resultado == 'Erro':
+        elif resultado == 'Erro': # Utilizado para quando há erro de leitura
             self.lbl_resultado.config(text=f'Resultado: ')
-        else:
+        else: # Mostra o resultado quando não houver erros anteriores
             self.lbl_resultado.config(text=f'Resultado: {str(resultado)} {calculo}')
 
-    def close_app(self):
-        if messagebox.askyesno('Encerrar', 'Deseja encerrar a aplicação?') == tk.YES:
+    def close_app(self): # Ação do botão Fechar aplicação
+        if messagebox.askyesno('Encerrar', 'Deseja encerrar a aplicação?') == tk.YES: # Mostra messagebox de seleção
             self.parent.destroy()
 
-    def disable_close(self):
-        messagebox.showinfo('Encerrar', 'Utilize o botão "Fechar aplicação" para encerrar')
+    def disable_close(self): # Ação do botão de fechar integrado
+        messagebox.showinfo('Encerrar', 'Utilize o botão "Fechar aplicação" para encerrar') # Mostra messagebox indicando a maneira correta de fechar o programa
 
-    def update_label(self):
+    def update_label(self): # Função para atualizar label ao selecionar radiobutton
         # Obtém o valor do Radiobutton selecionado (V, A ou R)
         escolha = self.str_opt.get()
-
+        # Muda os valores dos labels de acordo com o que foi selecionado
         if escolha == 'V':
             self.lbl_valor1.config(text='    Corrente (A):')
             self.lbl_valor2.config(text='Resistência (Ω):')
