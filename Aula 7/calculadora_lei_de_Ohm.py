@@ -65,7 +65,7 @@ class Aplicativo():
             valor2 = float(valor2)
         except:
             if calculo != '':
-                messagebox.showerror('Erro de leitura!', 'Digite um número') #exemplo
+                messagebox.showerror('Erro de leitura!', 'Digite números para realizar o cálculo') #exemplo
 
         if calculo == 'V':
             resultado = LeiDeOhm.primeira_lei(corrente=valor1, resistencia=valor2)
@@ -73,6 +73,7 @@ class Aplicativo():
             resultado = LeiDeOhm.primeira_lei(tensao=valor1, resistencia=valor2)
         elif calculo == 'R':
             resultado = LeiDeOhm.primeira_lei(tensao=valor1, corrente=valor2)
+            calculo = 'Ω'
         else:
             resultado = 'select'
 
@@ -82,7 +83,7 @@ class Aplicativo():
         elif resultado == 'Erro':
             self.lbl_resultado.config(text=f'Resultado: ')
         else:
-            self.lbl_resultado.config(text=f'Resultado: {str(resultado)}')
+            self.lbl_resultado.config(text=f'Resultado: {str(resultado)} {calculo}')
 
     def close_app(self):
         if messagebox.askyesno('Encerrar', 'Deseja encerrar a aplicação?') == tk.YES:
