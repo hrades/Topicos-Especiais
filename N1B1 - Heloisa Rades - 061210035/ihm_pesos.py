@@ -5,7 +5,8 @@ from calculadora_pesos import peso_linear
 class Aplicativo:
 
     def __init__(self, parent: tk.Tk):
-        parent.geometry('340x250')
+        parent.geometry('340x230')
+        self.app_parent = parent
         self.lbl_titulo = ttk.Label(parent, text='Calculadora de pesos')
         self.lbl_escolha1 = ttk.Label(parent, text='Escolha o perfil')
         self.lbl_escolha2 = ttk.Label(parent, text='Escolha o material')
@@ -35,7 +36,8 @@ class Aplicativo:
         self.lbl_tamanho = ttk.Label(parent, text='Digite o valor (cm):')
         self.txb_tamanho = ttk.Entry(parent)
         self.bot_calcular = ttk.Button(parent, text='Calcular', command=self.calcular)
-        self.lbl_resultado = ttk.Label(parent, text='teste')
+        self.lbl_resultado = ttk.Label(parent, text='')
+        self.bot_close = ttk.Button(parent, text='Fechar', command=self.close_app)
 
         self.show_grid()
         
@@ -55,6 +57,7 @@ class Aplicativo:
         self.txb_tamanho.grid(row=5, column=2, pady=5)
         self.bot_calcular.grid(row=6, column=1)
         self.lbl_resultado.grid(row=7,column=0, columnspan=3, pady=5)
+        self.bot_close.grid(row=8, column=2, pady=5, sticky='se')
 
     def update_lbl(self):
         perfil = self.str_perfil.get()
@@ -64,6 +67,10 @@ class Aplicativo:
             self.lbl_tamanho.config(text='Digite o lado  (cm):')
         elif perfil=='T':
             self.lbl_tamanho.config(text='Digite a base  (cm):')
+
+    def close_app(self):
+        if messagebox.askyesno('Encerrar', 'Deseja encerrar a aplicação?') == tk.YES: # Mostra messagebox de seleção
+            self.app_parent.destroy()
 
     def calcular(self):
         perfil = self.str_perfil.get()
