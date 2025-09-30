@@ -67,7 +67,7 @@ class Aplicativo:
 
     def calcular(self):
         perfil = self.str_perfil.get()
-        material = self.int_material.get()
+        mat = self.int_material.get()
         tamanho = self.txb_tamanho.get()
         funfa = False
 
@@ -78,12 +78,13 @@ class Aplicativo:
             messagebox.showerror('Erro de leitura!', 'Digite números para realizar o cálculo\nUtilize . no lugar de ,')
 
         if funfa == True:
-            if perfil == 'R' and material in [1,2,3]:
-                resultado = peso_linear.perfil_redondo(tamanho, material)
-            elif perfil == 'Q' and material in [1,2,3]:
-                resultado = peso_linear.perfil_quadrado(tamanho, material)
-            elif perfil == 'T' and material in [1,2,3]:
-                resultado = peso_linear.perfil_triang(tamanho, material)
+            calculadora = peso_linear()
+            if perfil == 'R' and mat in [1,2,3]:
+                resultado = calculadora.perfil_redondo(raio=tamanho, material=mat)
+            elif perfil == 'Q' and mat in [1,2,3]:
+                resultado = calculadora.perfil_quadrado(lado=tamanho, material=mat)
+            elif perfil == 'T' and mat in [1,2,3]:
+                resultado = calculadora.perfil_triang(lado=tamanho, material=mat)
             else:
                 messagebox.showwarning('Seleção!', 'Selecione uma das opções para o perfil e uma para o material')
                 resultado = 'erro'
