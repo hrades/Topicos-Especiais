@@ -22,15 +22,15 @@ class Aplicativo:
                                            variable=self.str_perfil,
                                            value='T',
                                            command=self.update_lbl)
-        self.str_material = tk.IntVar()
+        self.int_material = tk.IntVar()
         self.rdb_aco = ttk.Radiobutton(parent, text='Aço',
-                                       variable=self.str_material,
+                                       variable=self.int_material,
                                        value=1)
         self.rdb_latao = ttk.Radiobutton(parent, text='Latao',
-                                       variable=self.str_material,
+                                       variable=self.int_material,
                                        value=2)
         self.rdb_aluminio = ttk.Radiobutton(parent, text='Alumínio',
-                                       variable=self.str_material,
+                                       variable=self.int_material,
                                        value=3)
         self.lbl_tamanho = ttk.Label(parent, text='Digite o valor (cm):')
         self.txb_tamanho = ttk.Entry(parent)
@@ -67,7 +67,7 @@ class Aplicativo:
 
     def calcular(self):
         perfil = self.str_perfil.get()
-        material = self.str_material.get()
+        material = self.int_material.get()
         tamanho = self.txb_tamanho.get()
         funfa = False
 
