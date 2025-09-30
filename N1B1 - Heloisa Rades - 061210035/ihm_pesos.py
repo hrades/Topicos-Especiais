@@ -22,7 +22,7 @@ class Aplicativo:
                                            variable=self.str_perfil,
                                            value='T',
                                            command=self.update_lbl)
-        self.str_material = tk.StringVar()
+        self.str_material = tk.IntVar()
         self.rdb_aco = ttk.Radiobutton(parent, text='Aço',
                                        variable=self.str_material,
                                        value=1)
@@ -69,12 +69,28 @@ class Aplicativo:
         perfil = self.str_perfil.get()
         material = self.str_material.get()
         tamanho = self.txb_tamanho.get()
+        funfa = False
 
         try:
             tamanho = float(tamanho)
+            funfa = True
         except:
             messagebox.showerror('Erro de leitura!', 'Digite números para realizar o cálculo\nUtilize . no lugar de ,')
 
+        if funfa == True:
+            if perfil == 'R' and material in [1,2,3]:
+                resultado = peso_linear.perfil_redondo(tamanho, material)
+            elif perfil == 'Q' and material in [1,2,3]:
+                resultado = peso_linear.perfil_quadrado(tamanho, material)
+            elif perfil == 'T' and material in [1,2,3]:
+                resultado = peso_linear.perfil_triang(tamanho, material)
+            else:
+                messagebox.showwarning('Seleção!', 'Selecione uma das opções para o perfil e uma para o material')
+                resultado = 'erro'
+
+            if resultado!='erro':
+                self.lbl_resultado.config(text=f'Resultado: {resultado:.3f}')
+            
 if __name__=="__main__":
     janela = tk.Tk()
     Aplicativo(janela)
