@@ -107,7 +107,7 @@ class Aplicativo:
                 else:
                     valor3 = None # Se não for informado, o valor do resistor fica None
             except:
-                messagebox.showerror('Erro de leitura!', 'Digite valores numéricos para calcular.\nUse . no lugar de ,') # Erro de leitura
+                messagebox.showerror('Erro de leitura!', 'Digite valores numéricos para calcular.') # Erro de leitura
 
         # Verifica o que foi escolhido nos RadioButtons para realizar o calculo
         if escolha == 'Vin':
