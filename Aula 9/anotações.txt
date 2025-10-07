@@ -1,0 +1,10 @@
+Banco de dados:
+ - Coleções
+  -- Campos
+   --- documento
+
+Banco de dados é o conjunto de coleçoes (tabelas) que possui vários documentos e cada um tem seu respectivo campo
+
+Diversos bancos de dados formam um cluster
+
+Não existe interface gráfica no próprio banco de dados. Existem softwares de banco de dados e outro de interface gráfica
