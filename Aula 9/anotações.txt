@@ -12,3 +12,6 @@ Não existe interface gráfica no próprio banco de dados. Existem softwares de 
 Evitar caracteres especiais - Não começar com número, não conter espaços, não utilizar palavras especiais
 
 Não existem 2 documentos com o mesmo id
+
+Exemplo de pesquisa:
+{genero: /Drama/, ano: {$gt: 1951}} -- procurar todos que tem drama e que o ano for maior que 1951
