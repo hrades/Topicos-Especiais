@@ -4,6 +4,13 @@ from tkinter import ttk
 
 class Aplicativo:
     def __init__(self, parent):
+        parent.geometry("500x200")
+        self.lbl_setores = ttk.Label(parent, text="Aguardando...", font=('Arial', 14, 'bold'))
+                
+        self.lbl_setores.pack()
+        ttk.Button(parent, text="Consultar", command=self.acao_consultar).pack()
+
+    def acao_consultar(self):
         pass
 
 if __name__ == "__main__":
