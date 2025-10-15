@@ -3,8 +3,10 @@ import tkinter as tk
 from tkinter import ttk
 
 class Aplicativo:
-    def __init__(self):
+    def __init__(self, parent):
         pass
 
 if __name__ == "__main__":
-    pass
+    window =  tk.Tk()
+    Aplicativo(window)
+    window.mainloop()
