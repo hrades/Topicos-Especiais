@@ -25,6 +25,7 @@ class Aplicativo():
                                            value='A',
                                            command=self.update_label)
         self.rdb_resistencia = ttk.Radiobutton(self.fr_quadro1, text='Resistência',
+        
                                            variable=self.str_opt,
                                            value='R',
                                            command=self.update_label)
