@@ -5,6 +5,7 @@ from tkinter import ttk
 class Aplicativo:
     def __init__(self, parent):
         parent.geometry("500x200")
+        self.conexao_banco = Conexao_bd()
         self.lbl_setores = ttk.Label(parent, text="Aguardando...", font=('Arial', 14, 'bold'))
                 
         self.lbl_setores.pack()
