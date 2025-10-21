@@ -1,5 +1,10 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+from pymongo import MongoClient
+
+class Conexao_bd:
+    def __init__(self):
+        pass
 
 class Aplicativo:
     def __init__(self, parent):
