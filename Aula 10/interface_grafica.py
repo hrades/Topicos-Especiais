@@ -4,7 +4,12 @@ from pymongo import MongoClient
 
 class Conexao_bd:
     def __init__(self):
-        pass
+        self.conexao_mongo = MongoClient('localhost', 27017)
+        self.conector_setores = self.conexao_mongo['MeuBancodeDados']['setores']
+
+    def inserir_setor(self, setor_id, nome):
+        self.conector_setores.insert_one({'_id':setor_id,
+                                          'setor_nome':nome})
 
 class Aplicativo:
     def __init__(self, parent):
@@ -20,7 +25,10 @@ class Aplicativo:
         ttk.Button(self.frm_setores, text='Inserir', command=self.inserir_setor).grid(row=0,column=2,rowspan=2,sticky='ns')
 
     def inserir_setor(self):
-        pass
+        # Atribui um novo objeto da classe de conexão com o banco de dados
+        conexao = Conexao_bd()
+        # Método para inserção de um novo documento a partir da classe de conexão de banco de dados
+        conexao.inserir_setor()
 
 
 if __name__=="__main__":
