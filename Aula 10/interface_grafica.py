@@ -27,8 +27,16 @@ class Aplicativo:
     def inserir_setor(self):
         # Atribui um novo objeto da classe de conexão com o banco de dados
         conexao = Conexao_bd()
-        # Método para inserção de um novo documento a partir da classe de conexão de banco de dados
-        conexao.inserir_setor()
+        try:
+            setor = int(self.txb_setor_id.get())
+            # Método para inserção de um novo documento a partir da classe de conexão de banco de dados
+            conexao.inserir_setor(setor_id= setor,
+                              nome= self.txb_setor_nome.get())
+            messagebox.showinfo('Sucesso!', 'Registro adicionado ao banco de dados.\nVerifique para ter certeza.')
+        except:
+            messagebox.showerror('Erro', 'O registro nao pôde ser inserido.\nDigite um número que ainda não esteja na coleção')
+        
+        
 
 
 if __name__=="__main__":
