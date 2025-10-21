@@ -12,7 +12,11 @@ class Aplicativo:
         ttk.Button(parent, text="Consultar", command=self.acao_consultar).pack()
 
     def acao_consultar(self):
-        print(self.conexao_banco.listar_setores())
+        lista_nomes = [setor['setor_nome'] for setor in self.conexao_banco.listar_setores()]
+        texto = ''
+        for setor in lista_nomes:
+            texto += f"{setor}\n"
+        self.lbl_setores.config(text=texto)
 
 if __name__ == "__main__":
     window =  tk.Tk()
