@@ -11,6 +11,13 @@ class Conexao_bd:
     def inserir_setor(self, setor_id, nome):
         self.conector_setores.insert_one({'_id':setor_id,
                                           'setor_nome':nome})
+        
+    def listar_setores(self):
+        resposta = list()
+        for documento in self.conector_setores.find():
+            resposta.append(documento)
+        return resposta
+
 
 class Aplicativo:
     def __init__(self, parent):
@@ -28,6 +35,7 @@ class Aplicativo:
         self.txb_setor_nome.grid(row=1, column=1)
         ttk.Button(self.frm_setores, text='Inserir', command=self.inserir_setor).grid(row=0,column=2,rowspan=2,sticky='ns')
         self.scr_lista_setores.grid(row=2, column=0, columnspan=3, sticky='news')
+        ttk.Button(self.frm_setores, text='Atualizar lista', command=self.listar_setores).grid(row=3,column=0)
 
     # Inserir um novo setor no Banco de Dados
     def inserir_setor(self):
@@ -44,7 +52,8 @@ class Aplicativo:
         
     # Atualizar a caixa de texto com a lista de documentos da coleção setores
     def listar_setores(self):
-        pass
+        conexao = Conexao_bd()
+        print(conexao.listar_setores())
 
 
 if __name__=="__main__":
