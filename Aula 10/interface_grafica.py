@@ -40,6 +40,9 @@ class Conexao_bd:
         for dado in self.conector_funcionarios.find():
             lista.append(dado)
         return lista
+    
+    def deletar_funcionario(self, id_funcionario):
+        self.conector_funcionarios.delete_one({'_id': id_funcionario})
 
 
 class Aplicativo:
@@ -88,6 +91,22 @@ class Aplicativo:
         ttk.Button(self.frm_funcionarios, text='Inserir', command=self.inserir_funcionario).grid(row=0,column=2,rowspan=6,sticky='ns')
         self.scr_lista_funcionarios.grid(row=6, column=0, columnspan=3, sticky='news')
         ttk.Button(self.frm_funcionarios, text='Atualizar lista funcionários', command=self.listar_funcionarios).grid(row=7, column=0)
+        ttk.Button(self.frm_funcionarios, text='Deletar funcionário', command=self.deletar_funcionario).grid(row=7, column=1)
+
+        #Cálculos
+        self.frm_calculos = ttk.Labelframe(parent, text="Informações de funcionários")
+        self.txb_setor = ttk.Entry(self.frm_calculos)
+        self.lbl_total_func = ttk.Label(self.frm_calculos, text='Funcionários: ')
+        self.lbl_soma_sal = ttk.Label(self.frm_calculos, text='Total de salário: ')
+        self.lbl_med_sal_setor = ttk.Label(self.frm_calculos, text='Média salário/setor: ')
+
+        self.frm_calculos.pack(fill='both', expand=True)
+        self.lbl_total_func.grid(row=0,column=0)
+        self.lbl_soma_sal.grid(row=1,column=0)
+        ttk.Label(self.frm_calculos, text='Setor').grid(row=2,column=0)
+        self.txb_setor.grid(row=2, column=1)
+        self.lbl_med_sal_setor.grid(row=2,column=2)
+        ttk.Button(self.frm_calculos,text='Calcular',command=self.calcular).grid(row=3,column=0)
 
         
 
@@ -127,11 +146,23 @@ class Aplicativo:
         except:
             messagebox.showerror('Erro!', 'O funcionário não pôde ser cadastrado.\n\nDigite um id que ainda não foi utilizado.')
 
+    def deletar_funcionario(self):
+        conexao = Conexao_bd()
+        try:
+            id = int(self.txb_func_id.get())
+            conexao.deletar_funcionario(id_funcionario=id)
+            messagebox.showinfo('Sucesso!', 'Funcionário deletado do Bando de Dados.\n\nVerifique para ter certeza.')
+        except:
+            messagebox.showerror('Erro!', 'O funcionário não pôde ser cadastrado.\n\nDigite um id que ainda não foi utilizado.')
+
     def listar_funcionarios(self):
         conexao = Conexao_bd()
         self.scr_lista_funcionarios.delete(0.0, 'end')
         for funcionario in conexao.listar_funcionarios():
             self.scr_lista_funcionarios.insert('end', f"{funcionario['_id']}\t{funcionario['func_nome']} \t{funcionario['func_salario']}\n")
+
+    def calcular(self):
+        pass
 
 
 if __name__=="__main__":
