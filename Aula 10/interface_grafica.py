@@ -7,6 +7,7 @@ class Conexao_bd:
     def __init__(self):
         self.conexao_mongo = MongoClient('localhost', 27017)
         self.conector_setores = self.conexao_mongo['MeuBancodeDados']['setores']
+        self.conector_funcionarios = self.conexao_mongo['MeuBancodeDados']['funcionarios']
 
     def inserir_setor(self, setor_id, nome):
         self.conector_setores.insert_one({'_id':setor_id,
@@ -17,6 +18,14 @@ class Conexao_bd:
         for documento in self.conector_setores.find():
             resposta.append(documento)
         return resposta
+    
+    def cadastrar_funcionario(self, id_funcionario, func_nome, gerente_id, setor_id, func_salario, func_dataNasc):
+        self.conector_funcionarios.insert_one({'_id': id_funcionario,
+                                               'func_nome': func_nome,
+                                               'gerente_id': gerente_id,
+                                               'setor_id': setor_id,
+                                               'func_salario': func_salario,
+                                               'func_dataNasc': func_dataNasc})
 
 
 class Aplicativo:
