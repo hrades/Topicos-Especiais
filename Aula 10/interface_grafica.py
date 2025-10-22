@@ -53,7 +53,11 @@ class Aplicativo:
     # Atualizar a caixa de texto com a lista de documentos da coleção setores
     def listar_setores(self):
         conexao = Conexao_bd()
-        print(conexao.listar_setores())
+        # Limpar conteúdo de texto
+        self.scr_lista_setores.delete(0.0, 'end')
+        # Inserir o texto
+        for registro in conexao.listar_setores():
+            self.scr_lista_setores.insert('end', f"{registro['_id']}\t{registro['setor_nome']}\n")
 
 
 if __name__=="__main__":
